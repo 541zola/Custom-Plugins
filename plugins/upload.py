@@ -59,6 +59,7 @@ async def audio_upload(message: Message, path, del_path: bool = False,
 		artist = metadata.get("artist")
 	if metadata and metadata.has("duration"):
 		duration = metadata.get("duration").seconds 
+		durasi = metadata.get("duration").minutes
 	sent: Message = await message.client.send_message(
 	message.chat.id, f"`Uploading {str_path} as audio ... {extra}`")
 	start_t = datetime.now()
@@ -73,11 +74,13 @@ async def audio_upload(message: Message, path, del_path: bool = False,
 			quax = "256 kbps"
 		if "120" in path.name:
 			quax = "120 kbps"
+		capt = f"""🎧 {durasi} | **{quax}** | **{file_size}**
+"""
 		msg = await message.client.send_audio(
 			chat_id=message.chat.id,
 			audio=str_path,
 			thumb=thumb,
-			caption=f"🎧 {duration} | **{quax}** | **{file_size}**",
+			caption=capt,
 			title=title,
 			performer=artist,
 			duration=duration,
