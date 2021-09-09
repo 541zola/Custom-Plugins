@@ -58,14 +58,20 @@ async def audio_upload(message: Message, path, del_path: bool = False,
 	if metadata and metadata.has("artist"):
 		artist = metadata.get("artist")
 	if metadata and metadata.has("duration"):
-		duration = metadata.get("duration").seconds 
-		durasi = metadata.get("duration").minutes
+		duration = metadata.get("duration").seconds
 	sent: Message = await message.client.send_message(
 	message.chat.id, f"`Uploading {str_path} as audio ... {extra}`")
 	start_t = datetime.now()
 	await message.client.send_chat_action(message.chat.id, "upload_audio")
 	
 	try:
+		jd = eval(duration)
+		jam = jd//3600
+		sd = jd - (3600*jam)
+		menit=sd//60
+		detik = sd - (60*menit)
+		durasi = "%d:%d"%(menit,detik)
+
 		if "FLAC" in path.name:
 			quax = "FLAC"
 		if "320" in path.name:
@@ -102,3 +108,44 @@ async def audio_upload(message: Message, path, del_path: bool = False,
 	finally:
 		if os.path.lexists("album_cover.jpg"):
 			os.remove("album_cover.jpg")
+
+async def get_thumb(path: str = ''):
+	if os.path.exists(Config.THUMB_PATH):
+		return Config.THUMB_PATH
+	if path:
+		types = (".jpg", ".webp", ".png")
+		if path.endswith(types):
+			return None 
+		file_name = os.path.splitext(path)[0]
+		for type_ in types:
+			thumb_path = file_name + type_
+			if os.path.exists(thumb_path):
+				if type_ != ".jpg":
+					new_thumb_path = f"{file_name}.jpg"
+					Image.open(thumb_path).convert('RGB').save(new_thumb_path, "JPEG")
+					os.remove(thumb_path)
+					thumb_path = new_thumb_path
+				return thumb_path
+		metadata = extractMetadata(createParser(path))
+		if metadata and metadata.has("duration"):
+			return await take_screen_shot(
+			path, metadata.get("duration").seconds)
+	if os.path.exists(LOGO_PATH):
+		return LOGO_PATH
+	return None
+
+async def remove_thumb(thumb: str) -> None:
+	if (thumb and os.path.exists(thumb)
+			and thumb != LOGO_PATH and thumb != Config.THUMB_PATH):
+		os.remove(thumb)
+
+async def finalize(message: Message, msg: Message, start_t):
+	if 'df' not in message.flags:
+		await CHANNEL.fwd_msg(msg)
+	await message.client.send_chat_action(message.chat.id, "cancel")
+	if message.process_is_canceled:
+		await message.canceled()
+	else:
+		end_t = datetime.now()
+		m_s = (end_t - start_t).seconds
+		await message.edit(f"Uploaded in {m_s} seconds", del_in=10)
