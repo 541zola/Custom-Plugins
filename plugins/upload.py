@@ -65,7 +65,7 @@ async def audio_upload(message: Message, path, del_path: bool = False,
 	await message.client.send_chat_action(message.chat.id, "upload_audio")
 	
 	try:
-		jd = eval(duration)
+		jd = eval(str(duration))
 		jam = jd//3600
 		sd = jd - (3600*jam)
 		menit=sd//60
