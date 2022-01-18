@@ -1,26 +1,26 @@
-"Nganu"
+"Checker Dapa"
 import time
 from pyrogram.errors.exceptions.bad_request_400 import YouBlockedUser
 from userge import userge, Message
 from userge.utils.exceptions import StopConversation
 
 
-#ch
-@userge.on_cmd("ch", about={
-	'header': "Stripe $1",
-	'usage': "{tr}ch [Enter bin]\n"})
+#chk
+@userge.on_cmd("chk", about={
+	'header': "Auth Only",
+	'usage': "{tr}chk [Input CC]\n"})
 	
 async def gen(message: Message):
-	"""Stripe Auth $1"""
+	"""Cek Auth"""
 	replied = message.input_str
-	chat = "@binwatcher_bot"
+	chat = "@rkhackingbot"
 	await message.edit("```Tunggu mas ```")
 	msgs = []
-	ERROR_MSG = "Unblok bot @binwatcher_bot untuk menggunakan command ini"
+	ERROR_MSG = "Ijin dulu sama @Dappzx"
 	try:
 		async with userge.conversation(chat) as conv:
 			try:
-				await conv.send_message("/ch {}".format(replied))
+				await conv.send_message("/chk {}".format(replied))
 			except YouBlockedUser:
 				await message.err(f"**{ERROR_MSG}**", del_in=5)
 				return 
@@ -101,10 +101,10 @@ async def gen(message: Message):
 async def bin(message: Message):
 	"""BIN Ingfo"""
 	replied = message.input_str
-	chat = "@binwatcher_bot"
+	chat = "@rkhackingbot"
 	await message.edit("```Tunggu mas```")
 	msgs = []
-	ERROR_MSG = "Unblok bot @binwatcher_bot untuk menggunakan command ini"
+	ERROR_MSG = "Ijin dulu sama @Dappzx"
 	try:
 		async with userge.conversation(chat) as conv:
 			try:
@@ -181,22 +181,22 @@ async def bin(message: Message):
 		await message.edit(f"`Bot tidak merespon!`", del_in=5)
 
 
-#auth
+#sk
 @userge.on_cmd("auth", about={
-	'header': "Cek Auth",
-	'usage': "{tr}auth [Input CC]\n"})
+	'header': "Cek SK",
+	'usage': "{tr}sk [Input SK]\n"})
 	
 async def key(message: Message):
-	"""Auth $0"""
+	"""SK Checker"""
 	replied = message.input_str
-	chat = "@binwatcher_bot"
-	await message.edit("```Jangan Percaya Hasil Auth```")
+	chat = "@rkhackingbot"
+	await message.edit("```Tunggu mas```")
 	msgs = []
-	ERROR_MSG = "Unblok bot @binwatcher_bot untuk menggunakan command ini"
+	ERROR_MSG = "Ijin dulu sama @Dappzx"
 	try:
 		async with userge.conversation(chat) as conv:
 			try:
-				await conv.send_message("/auth {}".format(replied))
+				await conv.send_message("/sk {}".format(replied))
 			except YouBlockedUser:
 				await message.err(f"**{ERROR_MSG}**", del_in=5)
 				return 
