@@ -20,7 +20,7 @@ async def gen(message: Message):
 	try:
 		async with userge.conversation(chat) as conv:
 			try:
-				await conv.send_message("!ch {}".format(replied))
+				await conv.send_message("/ch {}".format(replied))
 			except YouBlockedUser:
 				await message.err(f"**{ERROR_MSG}**", del_in=5)
 				return 
@@ -108,7 +108,7 @@ async def bin(message: Message):
 	try:
 		async with userge.conversation(chat) as conv:
 			try:
-				await conv.send_message("!bin {}".format(replied))
+				await conv.send_message("/bin {}".format(replied))
 			except YouBlockedUser:
 				await message.err(f"**{ERROR_MSG}**", del_in=5)
 				return 
@@ -196,7 +196,7 @@ async def key(message: Message):
 	try:
 		async with userge.conversation(chat) as conv:
 			try:
-				await conv.send_message("!auth {}".format(replied))
+				await conv.send_message("/auth {}".format(replied))
 			except YouBlockedUser:
 				await message.err(f"**{ERROR_MSG}**", del_in=5)
 				return 
