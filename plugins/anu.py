@@ -182,7 +182,7 @@ async def bin(message: Message):
 
 
 #sk
-@userge.on_cmd("auth", about={
+@userge.on_cmd("sk", about={
 	'header': "Cek SK",
 	'usage': "{tr}sk [Input SK]\n"})
 	
