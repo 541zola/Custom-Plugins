@@ -14,7 +14,7 @@ async def gen(message: Message):
 	"""Cek Auth"""
 	replied = message.input_str
 	chat = "@AKUDANEMPATORANGTOLOL_BOT"
-	await message.edit("```Tunggu mas ```")
+	await message.edit("```Disuruh nunggu sama ayang ```")
 	msgs = []
 	ERROR_MSG = "Ijin dulu sama @Dappzx"
 	try:
@@ -102,7 +102,7 @@ async def bin(message: Message):
 	"""BIN Ingfo"""
 	replied = message.input_str
 	chat = "@AKUDANEMPATORANGTOLOL_BOT"
-	await message.edit("```Tunggu mas```")
+	await message.edit("```Disuruh nunggu sama ayang```")
 	msgs = []
 	ERROR_MSG = "Ijin dulu sama @Dappzx"
 	try:
@@ -190,7 +190,7 @@ async def key(message: Message):
 	"""SK Checker"""
 	replied = message.input_str
 	chat = "@AKUDANEMPATORANGTOLOL_BOT"
-	await message.edit("```Tunggu mas```")
+	await message.edit("```Disuruh nunggu sama ayang```")
 	msgs = []
 	ERROR_MSG = "Ijin dulu sama @Dappzx"
 	try:
