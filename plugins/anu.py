@@ -13,7 +13,7 @@ from userge.utils.exceptions import StopConversation
 async def gen(message: Message):
 	"""Cek Auth"""
 	replied = message.input_str
-	chat = "@rkhackingbot"
+	chat = "@AKUDANEMPATORANGTOLOL_BOT"
 	await message.edit("```Tunggu mas ```")
 	msgs = []
 	ERROR_MSG = "Ijin dulu sama @Dappzx"
@@ -101,7 +101,7 @@ async def gen(message: Message):
 async def bin(message: Message):
 	"""BIN Ingfo"""
 	replied = message.input_str
-	chat = "@rkhackingbot"
+	chat = "@AKUDANEMPATORANGTOLOL_BOT"
 	await message.edit("```Tunggu mas```")
 	msgs = []
 	ERROR_MSG = "Ijin dulu sama @Dappzx"
@@ -189,7 +189,7 @@ async def bin(message: Message):
 async def key(message: Message):
 	"""SK Checker"""
 	replied = message.input_str
-	chat = "@rkhackingbot"
+	chat = "@AKUDANEMPATORANGTOLOL_BOT"
 	await message.edit("```Tunggu mas```")
 	msgs = []
 	ERROR_MSG = "Ijin dulu sama @Dappzx"
