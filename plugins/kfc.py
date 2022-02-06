@@ -184,7 +184,7 @@ async def bin(message: Message):
 #fake
 @userge.on_cmd("fake", about={
 	'header': "Generate Fake Address",
-	'usage': "{tr}bin [Input Country Code]\n"})
+	'usage': "{tr}fake [Input Country Code]\n"})
 	
 async def key(message: Message):
 	"""Generate Fake Address"""
@@ -289,73 +289,19 @@ async def key(message: Message):
 				await message.err(f"**{ERROR_MSG}**", del_in=5)
 				return 
 			msgs = await conv.get_response(timeout=30, mark_read=True)
-			if "Wait" in msgs.text:
+			if "Checking.." in msgs.text:
 				time.sleep(1)
 				msgs = await conv.get_response(timeout=30, mark_read=True) 
-				if "Wait" in msgs.text:
+				if "Waiting for result..." in msgs.text:
 					time.sleep(1)
-					msgs = await conv.get_response(timeout=30, mark_read=True) 
-					if "Wait" in msgs.text:
-						time.sleep(1)
-						msgs = await conv.get_response(timeout=30, mark_read=True) 
-						if "Wait" in msgs.text:
-							time.sleep(1)
-							msgs = await conv.get_response(timeout=30, mark_read=True)
-							if "Wait" in msgs.text:
-								time.sleep(1)
-								msgs = await conv.get_response(timeout=30, mark_read=True)
-								if "Wait" in msgs.text:
-									time.sleep(1)
-									msgs = await conv.get_response(timeout=30, mark_read=True)
-									if "Wait" in msgs.text:
-										time.sleep(1)
-										msgs = await conv.get_response(timeout=30, mark_read=True)
-										if "Wait" in msgs.text:
-											time.sleep(1)
-											msgs = await conv.get_response(timeout=30, mark_read=True)
-											if "Wait" in msgs.text:
-												time.sleep(1)
-												msgs = await conv.get_response(timeout=30, mark_read=True)
-												if "Wait" in msgs.text:
-													time.sleep(1)
-													msgs = await conv.get_response(timeout=30, mark_read=True)
-													if "Wait" in msgs.text:
-														time.sleep(1)
-														msgs = await conv.get_response(timeout=30, mark_read=True) 
-														if "Wait" in msgs.text:
-															time.sleep(1)
-															msgs = await conv.get_response(timeout=30, mark_read=True)  
-															if "Wait" in msgs.text:
-																time.sleep(1)
-																msgs = await conv.get_response(timeout=30, mark_read=True)  
-																if "Wait" in msgs.text:
-																	time.sleep(1)
-																	msgs = await conv.get_response(timeout=30, mark_read=True) 
-																	if "Wait" in msgs.text:
-																		time.sleep(1)
-																		msgs = await conv.get_response(timeout=30, mark_read=True) 
-																		if "Wait" in msgs.text:
-																			time.sleep(1)
-																			msgs = await conv.get_response(timeout=30, mark_read=True) 
-																			if "Wait" in msgs.text:
-																				time.sleep(1)
-																				msgs = await conv.get_response(timeout=30, mark_read=True) 
-																				if "Wait" in msgs.text:
-																					time.sleep(1)
-																					msgs = await conv.get_response(timeout=30, mark_read=True) 
-																					if "Wait" in msgs.text:
-																						time.sleep(1)
-																						msgs = await conv.get_response(timeout=30, mark_read=True) 
-																						if "Wait" in msgs.text:
-																							time.sleep(1)
-																							msgs = await conv.get_response(timeout=30, mark_read=True) 
+					msgs = await conv.get_response(timeout=30, mark_read=True)
 	except StopConversation:
 		pass 
 	try:
 		await message.edit(f"{msgs.text}")
 	except AttributeError:
 		await message.edit(f"`Bot tidak merespon!`", del_in=5)
-		
+
 		
 #Spotify
 @userge.on_cmd("spo", about={
