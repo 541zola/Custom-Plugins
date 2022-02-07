@@ -226,7 +226,7 @@ Level: {bin_level}
 		status = "Declined"
 		msg = "Check again"
 	
-	ip_proxy = ses.get("http://icanhazip.com/").text.replace('\n','')
+	ip_proxy = ses.get("https://httpbin.org/ip").json()['origin']
 	time_end = time.time() - time_start
 	result_cc = f"""{status}
 	
